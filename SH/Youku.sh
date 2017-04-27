@@ -87,3 +87,6 @@ local_port = 22
 remote_port = 51686
 
 EOF
+#启动：
+frpc -c /tmp/frp/myfrpc.ini &
+logger -t "【FRP启动脚本】" "脚本完成"
