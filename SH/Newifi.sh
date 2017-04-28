@@ -90,6 +90,60 @@ local_ip = 192.168.123.1
 local_port = 22
 remote_port = 51683
 EOF
+
+cat > "/tmp/frp/myfrpc1.ini" <<-\EOF
+[common]
+server_addr = frp.txdn.tk
+server_port = 7000
+privilege_token = txdn
+[web_blackduck]
+type = http
+local_ip = 192.168.123.1
+local_port = 80
+use_gzip = true
+use_encryption = true
+pool_count = 20
+privilege_mode = true
+custom_domains = blackduck.frp.txdn.tk
+log_file = /dev/null
+log_level = info
+log_max_days = 3
+[tcp_blackduck]
+type = tcp
+privilege_mode = true
+local_ip = 192.168.123.1
+local_port = 22
+remote_port = 51683
+EOF
+
+cat > "/tmp/frp/myfrpc2.ini" <<-\EOF
+[common]
+server_addr = frp3.chuantou.org
+server_port = 7000
+privilege_token = www.xxorg.com
+[web_blackduck]
+type = http
+local_ip = 192.168.123.1
+local_port = 80
+use_gzip = true
+use_encryption = true
+pool_count = 20
+privilege_mode = true
+custom_domains = blackduck.frp3.chuantou.org
+log_file = /dev/null
+log_level = info
+log_max_days = 3
+[tcp_blackduck]
+type = tcp
+privilege_mode = true
+local_ip = 192.168.123.1
+local_port = 22
+remote_port = 51683
+EOF
+
+
 #启动：
 frpc -c /tmp/frp/myfrpc.ini &
+frpc -c /tmp/frp/myfrpc1.ini &
+frpc -c /tmp/frp/myfrpc2.ini &
 logger -t "【FRP启动脚本】" "脚本完成"
