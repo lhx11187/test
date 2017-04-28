@@ -4,11 +4,11 @@
 killall edge
 killall edge2
 /etc/storage/bin/n2n/edge -d n2n_v1 -a 10.10.1.11 -c blackduck -k 123 -l kai.lucktu.com:10082 &
-/etc/storage/bin/n2n/edge2 -d n2n_v2 -a 10.10.10.11 -c blackduck -k 123 -l kai.lucktu.com:10086 &
+#/etc/storage/bin/n2n/edge2 -d n2n_v2 -a 10.10.10.11 -c blackduck -k 123 -l kai.lucktu.com:10086 &
 
 /etc/storage/bin/n2n/edge -d txdn_v1 -a 10.10.3.11 -c blackduck -k 123 -l n2n.txdn.tk:10082 &
 
-#/etc/storage/bin/n2n/edge -d lu8_v1 -a 10.10.2.11 -c blackduck -k 123 -l n2n.lu8.win:10082 &
+/etc/storage/bin/n2n/edge -d lu8_v1 -a 10.10.2.11 -c blackduck -k 123 -l n2n.lu8.win:10082 &
 #/etc/storage/bin/n2n/edge2 -d lu8_v2 -a 10.10.20.11 -c blackduck -k 123 -l n2n.lu8.win:10086 &
 
 logger -t "【N2N启动脚本】" "脚本完成"
