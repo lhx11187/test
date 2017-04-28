@@ -38,18 +38,18 @@ ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168
 ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:85,Sdname:blackduck3_85] & 
 ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:9091,Sdname:blackduck3_9091] & 
 ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:4200,Sdname:blackduck3_4200] &
+ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:80,Sdname:blackduck3] & 
 #ngrokc -SER[Shost:ittun.cn,Sport:44433,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:80,Sdname:blackduck3] &
 #ngrokc -SER[Shost:ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:6800,Rport:51680] & 
 ngrokc -SER[Shost:tcp.ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:6800,Rport:51680] & 
 ngrokc -SER[Shost:tcp.ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:22,Rport:51686] &
-ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:80,Sdname:blackduck3] & 
 #ngrokc -SER[Shost:ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:22,Rport:51686] & 
 
 logger -t "【Ngrok启动脚本】" "脚本完成"
 
 #  启动FRP脚本
-export PATH='/opt/usr/sbin:/opt/usr/bin:/opt/sbin:/opt/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin'
-export LD_LIBRARY_PATH=/lib:/opt/lib
+#export PATH='/opt/usr/sbin:/opt/usr/bin:/opt/sbin:/opt/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin'
+#export LD_LIBRARY_PATH=/lib:/opt/lib
 killall frpc frps
 mkdir -p /tmp/frp
 #启动frp功能后会运行以下脚本
