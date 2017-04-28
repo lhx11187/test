@@ -105,6 +105,9 @@ use_encryption = true
 pool_count = 20
 privilege_mode = true
 custom_domains = blackduck3.frp.txdn.tk
+log_file = /dev/null
+log_level = info
+log_max_days = 3
 
 [tcp_blackduck3]
 type = tcp
@@ -130,6 +133,9 @@ use_encryption = true
 pool_count = 20
 privilege_mode = true
 custom_domains = blackduck3.frp3.chuantou.org
+log_file = /dev/null
+log_level = info
+log_max_days = 3
 
 [tcp_blackduck3]
 type = tcp
