@@ -1,8 +1,8 @@
 #!/bin/sh
 
 #启动n2n脚本
-killall -9 edge
-killall -9 edge2
+killall edge
+killall edge2
 /etc/storage/bin/n2n/edge -d n2n_v1 -a 10.10.1.13 -c blackduck -k 123 -l kai.lucktu.com:10082 &
 /etc/storage/bin/n2n/edge2 -d n2n_v2 -a 10.10.10.13 -c blackduck -k 123 -l kai.lucktu.com:10086 &
 
@@ -90,6 +90,5 @@ remote_port = 51686
 
 EOF
 #启动：
-killall -9 frpc
 frpc -c /tmp/frp/myfrpc.ini &
 logger -t "【FRP启动脚本】" "脚本完成"
