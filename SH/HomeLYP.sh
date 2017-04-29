@@ -8,7 +8,7 @@ killall edge2
 
 /etc/storage/bin/n2n/edge -d txdn_v1 -a 10.10.3.12 -c blackduck -k 123 -l n2n.txdn.tk:10082 &
 
-#/etc/storage/bin/n2n/edge -d lu8_v1 -a 10.10.2.12 -c blackduck -k 123 -l n2n.lu8.win:10082 &
+/etc/storage/bin/n2n/edge -d lu8_v1 -a 10.10.2.12 -c blackduck -k 123 -l n2n.lu8.win:10082 &
 #/etc/storage/bin/n2n/edge2 -d lu8_v2 -a 10.10.20.12 -c blackduck -k 123 -l n2n.lu8.win:10086 &
 
 logger -t "【N2N启动脚本】" "脚本完成"
@@ -73,6 +73,55 @@ local_port = 22
 remote_port = 51684
 EOF
 
+cat > "/tmp/frp/myfrpc1.ini" <<-\EOF
+[common]
+server_addr = frp.txdn.tk
+server_port = 7000
+privilege_token = txdn
+[web_blackduck2]
+type = http
+local_ip = 192.168.123.1
+local_port = 80
+use_gzip = true
+use_encryption = true
+pool_count = 20
+privilege_mode = true
+custom_domains = blackduck2.frp.txdn.tk
+log_file = /dev/null
+log_level = info
+log_max_days = 3
+[tcp_blackduck2]
+type = tcp
+privilege_mode = true
+local_ip = 192.168.123.1
+local_port = 22
+remote_port = 51684
+EOF
+
+cat > "/tmp/frp/myfrpc2.ini" <<-\EOF
+[common]
+server_addr = frp3.chuantou.org
+server_port = 7000
+privilege_token = www.xxorg.com
+[web_blackduck2]
+type = http
+local_ip = 192.168.123.1
+local_port = 80
+use_gzip = true
+use_encryption = true
+pool_count = 20
+privilege_mode = true
+custom_domains = blackduck2.frp3.chuantou.org
+log_file = /dev/null
+log_level = info
+log_max_days = 3
+[tcp_blackduck2]
+type = tcp
+privilege_mode = true
+local_ip = 192.168.123.1
+local_port = 22
+remote_port = 51684
+EOF
 
 
 #启动：
