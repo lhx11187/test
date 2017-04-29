@@ -4,7 +4,7 @@
 killall edge
 killall edge2
 /etc/storage/bin/n2n/edge -d n2n_v1 -a 10.10.1.12 -c blackduck -k 123 -l kai.lucktu.com:10082 &
-/etc/storage/bin/n2n/edge2 -d n2n_v2 -a 10.10.10.12 -c blackduck -k 123 -l kai.lucktu.com:10086 &
+#/etc/storage/bin/n2n/edge2 -d n2n_v2 -a 10.10.10.12 -c blackduck -k 123 -l kai.lucktu.com:10086 &
 
 /etc/storage/bin/n2n/edge -d txdn_v1 -a 10.10.3.12 -c blackduck -k 123 -l n2n.txdn.tk:10082 &
 
@@ -49,9 +49,6 @@ mkdir -p /tmp/frp
 #客户端配置：
 cat > "/tmp/frp/myfrpc.ini" <<-\EOF
 [common]
-#server_addr = 115.159.6.79
-#server_port = 7000
-#privilege_token = txdn
 server_addr = frp.lu8.win
 server_port = 7000
 privilege_token = frp888
@@ -75,6 +72,11 @@ local_ip = 192.168.123.1
 local_port = 22
 remote_port = 51684
 EOF
+
+
+
 #启动：
 frpc -c /tmp/frp/myfrpc.ini &
+frpc -c /tmp/frp/myfrpc1.ini &
+frpc -c /tmp/frp/myfrpc2.ini &
 logger -t "【FRP启动脚本】" "脚本完成"
