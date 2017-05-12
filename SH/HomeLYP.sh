@@ -14,7 +14,8 @@ killall edge2
 logger -t "【N2N启动脚本】" "脚本完成"
 
 #  启动Ngrok脚本
-export PATH='/opt/usr/sbin:/opt/usr/bin:/opt/sbin:/opt/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin'
+#ln -s /etc/storage/bin/ngrokc /opt/bin/ngrokc
+export PATH='/etc/storage/bin:/opt/usr/sbin:/opt/usr/bin:/opt/sbin:/opt/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin'
 export LD_LIBRARY_PATH=/lib:/opt/lib
 killall ngrokc
 #启动ngrok功能后会运行以下脚本
