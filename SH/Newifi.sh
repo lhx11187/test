@@ -6,7 +6,7 @@ killall edge2
 /etc/storage/bin/n2n/edge -d n2n_v1 -a 10.10.1.11 -c blackduck -k 123 -l kai.lucktu.com:10082 &
 #/etc/storage/bin/n2n/edge2 -d n2n_v2 -a 10.10.10.11 -c blackduck -k 123 -l kai.lucktu.com:10086 &
 
-/etc/storage/bin/n2n/edge -d txdn_v1 -a 10.10.3.11 -c blackduck -k 123 -l n2n.txdn.tk:10082 &
+#/etc/storage/bin/n2n/edge -d txdn_v1 -a 10.10.3.11 -c blackduck -k 123 -l n2n.txdn.tk:10082 &
 
 /etc/storage/bin/n2n/edge -d lu8_v1 -a 10.10.2.11 -c blackduck -k 123 -l n2n.lu8.win:10082 &
 #/etc/storage/bin/n2n/edge2 -d lu8_v2 -a 10.10.20.11 -c blackduck -k 123 -l n2n.lu8.win:10086 &
@@ -91,30 +91,30 @@ local_port = 22
 remote_port = 51683
 EOF
 
-cat > "/tmp/frp/myfrpc1.ini" <<-\EOF
-[common]
-server_addr = frp.txdn.tk
-server_port = 7000
-privilege_token = txdn
-[web_blackduck]
-type = http
-local_ip = 192.168.123.1
-local_port = 80
-use_gzip = true
-use_encryption = true
-pool_count = 20
-privilege_mode = true
-custom_domains = blackduck.frp.txdn.tk
-log_file = /dev/null
-log_level = info
-log_max_days = 3
-[tcp_blackduck]
-type = tcp
-privilege_mode = true
-local_ip = 192.168.123.1
-local_port = 22
-remote_port = 51683
-EOF
+#cat > "/tmp/frp/myfrpc1.ini" <<-\EOF
+#[common]
+#server_addr = frp.txdn.tk
+#server_port = 7000
+#privilege_token = txdn
+#[web_blackduck]
+#type = http
+#local_ip = 192.168.123.1
+#local_port = 80
+#use_gzip = true
+#use_encryption = true
+#pool_count = 20
+#privilege_mode = true
+#custom_domains = blackduck.frp.txdn.tk
+#log_file = /dev/null
+#log_level = info
+#log_max_days = 3
+#[tcp_blackduck]
+#type = tcp
+#privilege_mode = true
+#local_ip = 192.168.123.1
+#local_port = 22
+#remote_port = 51683
+#EOF
 
 cat > "/tmp/frp/myfrpc2.ini" <<-\EOF
 [common]
@@ -144,6 +144,6 @@ EOF
 
 #启动：
 frpc -c /tmp/frp/myfrpc.ini &
-frpc -c /tmp/frp/myfrpc1.ini &
+#frpc -c /tmp/frp/myfrpc1.ini &
 frpc -c /tmp/frp/myfrpc2.ini &
 logger -t "【FRP启动脚本】" "脚本完成"
