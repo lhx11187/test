@@ -16,6 +16,7 @@ killall edge2
 #/etc/storage/bin/n2n/edge -d laiyx_mg_v1 -a 10.10.9.13 -c blackduck -k 123 -l n2n.laiyx.win:10082 &
 
 #捷克	remoteqth.com:82
+#日本 106.186.30.16:6489
 
 
 
