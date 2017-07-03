@@ -76,7 +76,23 @@ logger -t "【Ngrok启动脚本】" "脚本完成"
 #  启动FRP脚本
 #export PATH='/opt/usr/sbin:/opt/usr/bin:/opt/sbin:/opt/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin'
 #export LD_LIBRARY_PATH=/lib:/opt/lib
-
+SVC_PATH="/tmp/frp/frpc"
+if [ ! -s "$SVC_PATH" ] ; then
+  wgetcurl.sh /opt/bin/frpc "$hiboyfile/frpc" "$hiboyfile2/frpc"
+	SVC_PATH="/opt/bin/frpc"
+fi
+	hash frpc 2>/dev/null || rm -rf /opt/bin/frpc
+	if [ ! -s "$SVC_PATH" ] ; then
+		logger -t "【frp】" "找不到 $SVC_PATH 下载程序"
+		wgetcurl.sh /opt/bin/frpc "$hiboyfile/frpc" "$hiboyfile2/frpc"
+		chmod 755 "/opt/bin/frpc"
+	else
+		logger -t "【frp】" "找到 $SVC_PATH"
+	fi
+	if [ ! -s "$SVC_PATH" ] ; then
+		logger -t "【frp】" "找不到 $SVC_PATH ，需要手动安装 $SVC_PATH"
+		logger -t "【frp】" "启动失败, 10 秒后自动尝试重新启动" && sleep 10
+	fi
 
 
 killall frpc frps
