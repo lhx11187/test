@@ -20,6 +20,9 @@ killall edge2
 
 logger -t "【N2N启动脚本】" "脚本完成"
 
+
+
+
 #  启动Ngrok脚本
 #ln -s /etc/storage/bin/ngrokc /opt/bin/ngrokc
 export PATH='/etc/storage/bin:/opt/usr/sbin:/opt/usr/bin:/opt/sbin:/opt/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin'
@@ -38,15 +41,44 @@ killall ngrokc
 #Sdname -子域名
 #Hostname -自定义域名映射 备注：需要做域名解释到服务器地址
 #Rport -远程端口，tcp映射的时候，制定端口使用。
+SVC_PATH="/etc/storage/bin/ngrokc"
+if [ ! -s "$SVC_PATH" ] ; then
+  wgetcurl.sh /etc/storage/bin/ngrokc "$hiboyfile/ngrokc" "$hiboyfile2/ngrokc"
+	SVC_PATH="/opt/bin/ngrokc"
+fi
+hash ngrokc 2>/dev/null || rm -rf /opt/bin/ngrokc
+if [ ! -s "$SVC_PATH" ] ; then
+	logger -t "【ngrok】" "找不到 $SVC_PATH 下载程序"
+	wgetcurl.sh /opt/bin/ngrokc "$hiboyfile/ngrokc" "$hiboyfile2/ngrokc"
+	chmod 755 "/opt/bin/ngrokc"
+else
+	logger -t "【ngrok】" "找到 $SVC_PATH"
+fi
+if [ ! -s "$SVC_PATH" ] ; then
+	logger -t "【ngrok】" "找不到 $SVC_PATH ，需要手动安装 $SVC_PATH"
+	logger -t "【ngrok】" "启动失败, 10 秒后自动尝试重新启动" && sleep 10
+fi
 
-ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.123.1,Lport:80,Sdname:blackduck2] & 
-ngrokc -SER[Shost:tcp.ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.123.1,Lport:22,Rport:51684] &
+/opt/bin/ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.123.1,Lport:80,Sdname:blackduck1] &
+/etc/storage/bin/ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.123.1,Lport:80,Sdname:blackduck2] &
+/etc/storage/bin/ngrokc -SER[Shost:tcp.ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.123.1,Lport:22,Rport:51684] &
+
+
+
+
+#/etc/storage/bin/ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.123.1,Lport:80,Sdname:blackduck2] & 
+#/etc/storage/bin/ngrokc -SER[Shost:tcp.ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.123.1,Lport:22,Rport:51684] &
 
 logger -t "【Ngrok启动脚本】" "脚本完成"
+
+
 
 #  启动FRP脚本
 #export PATH='/opt/usr/sbin:/opt/usr/bin:/opt/sbin:/opt/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin'
 #export LD_LIBRARY_PATH=/lib:/opt/lib
+
+
+
 killall frpc frps
 mkdir -p /tmp/frp
 #启动frp功能后会运行以下脚本
