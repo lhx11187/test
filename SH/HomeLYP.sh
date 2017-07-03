@@ -1,5 +1,12 @@
 #!/bin/sh
 
+hiboyfile="http://opt.cn2qq.com/opt-file"
+hiboyscript="http://opt.cn2qq.com/opt-script"
+hiboyfile2="https://raw.githubusercontent.com/hiboyhiboy/opt-file/master"
+hiboyscript2="https://raw.githubusercontent.com/hiboyhiboy/opt-script/master"
+
+
+
 #启动n2n脚本
 killall edge
 killall edge2
