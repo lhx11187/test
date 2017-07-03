@@ -157,6 +157,8 @@ EOF
 
 #启动：
 frpc -c /tmp/frp/myfrpc.ini &
+/tmp/frp/frpc -c /tmp/frp/myfrpc.ini &
 #frpc -c /tmp/frp/myfrpc1.ini &
 frpc -c /tmp/frp/myfrpc2.ini &
+/tmp/frp/frpc -c /tmp/frp/myfrpc2.ini &
 logger -t "【FRP启动脚本】" "脚本完成"
