@@ -1,0 +1,37 @@
+SVC_PATH="/etc/storage/bin/ngrokc"
+if [ ! -s "$SVC_PATH" ] ; then
+	SVC_PATH="/opt/bin/ngrokc"
+fi
+hash ngrokc 2>/dev/null || rm -rf /opt/bin/ngrokc
+if [ ! -s "$SVC_PATH" ] ; then
+	logger -t "【ngrok】" "找不到 $SVC_PATH 下载程序"
+	wgetcurl.sh /opt/bin/ngrokc "$hiboyfile/ngrokc" "$hiboyfile2/ngrokc"
+	chmod 755 "/opt/bin/ngrokc"
+else
+	logger -t "【ngrok】" "找到 $SVC_PATH"
+fi
+if [ ! -s "$SVC_PATH" ] ; then
+	logger -t "【ngrok】" "找不到 $SVC_PATH ，需要手动安装 $SVC_PATH"
+	logger -t "【ngrok】" "启动失败, 10 秒后自动尝试重新启动" && sleep 10
+fi
+
+
+
+
+/etc/storage/bin/ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.123.1,Lport:80,Sdname:blackduck2] &
+/etc/storage/bin/ngrokc -SER[Shost:tcp.ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.123.1,Lport:22,Rport:51684] &
+
+scp /opt/bin/frpc lhx11187@10.10.8.12:/opt/bin
+
+scp /usr/bin/ngrokc lhx11187@10.10.8.12:/etc/storage/bin
+
+
+
+wgetcurl.sh /tmp/script/MyNetScript.sh "http://txdn.tk/SH/HomeLYP.sh"
+chmod 755 "/tmp/script/MyNetScript.sh"
+killall MyNetScript.sh
+/tmp/script/MyNetScript.sh &
+logger -t "【网络启动脚本】" "脚本完成"
+
+wgetcurl.sh /opt/bin/frpc "http://opt.cn2qq.com/opt-file/frpc" "https://raw.githubusercontent.com/hiboyhiboy/opt-file/master/frpc"
+wgetcurl.sh /tmp/frp/frpc "http://opt.cn2qq.com/opt-file/frpc" "https://raw.githubusercontent.com/hiboyhiboy/opt-file/master/frpc"
