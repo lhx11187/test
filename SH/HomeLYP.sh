@@ -16,7 +16,7 @@ killall edge2
 #/etc/storage/bin/n2n/edge -d lucktu -a 10.10.4.12 -c blackduck -k 123 -l n2n.lucktu.com:10082 &
 #/etc/storage/bin/n2n/edge -d udpfile_v1 -a 10.10.5.12 -c blackduck -k 123 -l n2n.udpfile.com:10082 &
 /etc/storage/bin/n2n/edge -d llfj_v1 -a 10.10.6.12 -c blackduck -k 123 -l n2n.llfj.party:10082 &
-/etc/storage/bin/n2n/edge -d laiyx_v1 -a 10.10.7.12 -c blackduck -k 123 -l n2ndx.laiyx.win:10082 &
+/etc/storage/bin/n2n/edge -d laiyx_v1 -a 10.10.7.12 -c blackduck -k 123 -l n2n.laiyx.win:10082 &
 /etc/storage/bin/n2n/edge -d rb_v1 -a 10.10.8.12 -c blackduck -k 123 -l 106.186.30.16:6489 &
 #/etc/storage/bin/n2n/edge -d laiyx_mg_v1 -a 10.10.9.12 -c blackduck -k 123 -l n2n.laiyx.win:10082 &
 
