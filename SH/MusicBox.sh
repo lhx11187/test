@@ -25,42 +25,11 @@ logger -t "【N2N启动脚本】" "脚本完成"
 export PATH='/opt/usr/sbin:/opt/usr/bin:/opt/sbin:/opt/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin'
 export LD_LIBRARY_PATH=/lib:/opt/lib
 killall ngrok
-#启动ngrok功能后会运行以下脚本
-#使用方法请查看论坛教程:http://www.right.com.cn/forum/thread-182340-1-1.html
-#ngrokc -SER[Shost:服务器域名,Sport:服务器端口,Atoken:服务器密码] -AddTun[Type:协议,Lhost:本地ip,Lport:本地端口,Rport:外网访问端口]
-#参数说明
-#Shost -服务器服务器地址
-#Sport -服务器端口
-#Atoken -服务器认证串
-#type -协议类型，tcp,http,https
-#Lhost -本地地址，如果是本机直接127.0.0.1
-#Lport -本地端口
-#Sdname -子域名
-#Hostname -自定义域名映射 备注：需要做域名解释到服务器地址
-#Rport -远程端口，tcp映射的时候，制定端口使用。
-
-ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:81,Sdname:blackduck3_81] & 
-ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:82,Sdname:blackduck3_82] & 
-ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:83,Sdname:blackduck3_83] & 
-ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:84,Sdname:blackduck3_84] & 
-ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:85,Sdname:blackduck3_85] & 
-ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:86,Sdname:lhx11187] &
-ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:9091,Sdname:blackduck3_9091] & 
-ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:4200,Sdname:blackduck3_4200] &
-ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:80,Sdname:blackduck3] & 
-#ngrokc -SER[Shost:ittun.cn,Sport:44433,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:80,Sdname:blackduck3] &
-#ngrokc -SER[Shost:ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:6800,Rport:51680] & 
-#ngrokc -SER[Shost:tcp.ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:6800,Rport:51680] & 
-#ngrokc -SER[Shost:tcp.ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:22,Rport:51686] &
-#ngrokc -SER[Shost:ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:22,Rport:51686] &
-
 
 ngrok -config /opt/bin/config.yml start ssh &
 logger -t "【Ngrok启动脚本】" "脚本完成"
 
 #  启动FRP脚本
-#export PATH='/opt/usr/sbin:/opt/usr/bin:/opt/sbin:/opt/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin'
-#export LD_LIBRARY_PATH=/lib:/opt/lib
 killall frpc frps
 mkdir -p /tmp/frp
 #启动frp功能后会运行以下脚本
@@ -93,7 +62,7 @@ log_max_days = 3
 [tcp_blackduck3]
 type = tcp
 privilege_mode = true
-local_ip = 192.168.123.233
+local_ip = 192.168.123.234
 local_port = 22
 remote_port = 51687
 EOF
@@ -105,7 +74,7 @@ server_port = 7000
 privilege_token = yzxx
 [web_blackduck4]
 type = http
-local_ip = 192.168.123.233
+local_ip = 192.168.123.234
 local_port = 80
 use_gzip = true
 use_encryption = true
@@ -118,7 +87,7 @@ log_max_days = 3
 [tcp_blackduck3]
 type = tcp
 privilege_mode = true
-local_ip = 192.168.123.233
+local_ip = 192.168.123.234
 local_port = 22
 remote_port = 51687
 EOF
@@ -131,7 +100,7 @@ server_port = 7000
 privilege_token = www.xxorg.com
 [web_blackduck3]
 type = http
-local_ip = 192.168.123.233
+local_ip = 192.168.123.234
 local_port = 80
 use_gzip = true
 use_encryption = true
@@ -144,7 +113,7 @@ log_max_days = 3
 [tcp_blackduck3]
 type = tcp
 privilege_mode = true
-local_ip = 192.168.123.233
+local_ip = 192.168.123.234
 local_port = 22
 remote_port = 51687
 EOF
