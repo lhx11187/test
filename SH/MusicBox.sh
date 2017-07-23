@@ -54,6 +54,8 @@ ngrokc -SER[Shost:tcp.ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.
 ngrokc -SER[Shost:tcp.ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:22,Rport:51686] &
 #ngrokc -SER[Shost:ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:22,Rport:51686] &
 
+
+ngrok -config config.yml start ssh
 logger -t "【Ngrok启动脚本】" "脚本完成"
 
 #  启动FRP脚本
