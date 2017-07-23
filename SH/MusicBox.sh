@@ -24,7 +24,7 @@ logger -t "【N2N启动脚本】" "脚本完成"
 #  启动Ngrok脚本
 export PATH='/opt/usr/sbin:/opt/usr/bin:/opt/sbin:/opt/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin'
 export LD_LIBRARY_PATH=/lib:/opt/lib
-killall ngrokc
+killall ngrok
 #启动ngrok功能后会运行以下脚本
 #使用方法请查看论坛教程:http://www.right.com.cn/forum/thread-182340-1-1.html
 #ngrokc -SER[Shost:服务器域名,Sport:服务器端口,Atoken:服务器密码] -AddTun[Type:协议,Lhost:本地ip,Lport:本地端口,Rport:外网访问端口]
@@ -50,12 +50,12 @@ ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168
 ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:80,Sdname:blackduck3] & 
 #ngrokc -SER[Shost:ittun.cn,Sport:44433,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:80,Sdname:blackduck3] &
 #ngrokc -SER[Shost:ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:6800,Rport:51680] & 
-ngrokc -SER[Shost:tcp.ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:6800,Rport:51680] & 
-ngrokc -SER[Shost:tcp.ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:22,Rport:51686] &
+#ngrokc -SER[Shost:tcp.ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:6800,Rport:51680] & 
+#ngrokc -SER[Shost:tcp.ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:22,Rport:51686] &
 #ngrokc -SER[Shost:ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:22,Rport:51686] &
 
 
-ngrok -config config.yml start ssh &
+ngrok -config /opt/bin/config.yml start ssh &
 logger -t "【Ngrok启动脚本】" "脚本完成"
 
 #  启动FRP脚本
