@@ -26,7 +26,15 @@ export PATH='/opt/usr/sbin:/opt/usr/bin:/opt/sbin:/opt/bin:/usr/local/sbin:/usr/
 export LD_LIBRARY_PATH=/lib:/opt/lib
 killall ngrok
 
-ngrok -config /opt/bin/config.yml start ssh &
+ngrok -config /opt/bin/tcp.ittun.yml start ssh & #51687-->22
+ngrok -config /opt/bin/tcp.ittun.yml start aria & #51688-->6800
+ngrok -config /opt/bin/tcp.ittun.yml start tinyproxy & #51689-->9999
+
+ngrok -config /opt/bin/ittun.yml start web & #blackduck4
+ngrok -config /opt/bin/ittun.yml start tr & #blackduck4_9091
+ngrok -config /opt/bin/ittun.yml start amule & #blackduck4_4711
+
+
 logger -t "【Ngrok启动脚本】" "脚本完成"
 
 #  启动FRP脚本
