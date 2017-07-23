@@ -59,7 +59,7 @@ custom_domains = blackduck4.frp.lu8.win
 log_file = /dev/null
 log_level = info
 log_max_days = 3
-[tcp_blackduck3]
+[tcp_blackduck4]
 type = tcp
 privilege_mode = true
 local_ip = 192.168.123.234
@@ -84,7 +84,7 @@ custom_domains = blackduck4.ifrp.ga
 log_file = /dev/null
 log_level = info
 log_max_days = 3
-[tcp_blackduck3]
+[tcp_blackduck4]
 type = tcp
 privilege_mode = true
 local_ip = 192.168.123.234
@@ -98,7 +98,7 @@ cat > "/tmp/frp/myfrpc2.ini" <<-\EOF
 server_addr = frp3.chuantou.org
 server_port = 7000
 privilege_token = www.xxorg.com
-[web_blackduck3]
+[web_blackduck4]
 type = http
 local_ip = 192.168.123.234
 local_port = 80
@@ -110,7 +110,7 @@ custom_domains = blackduck4.frp3.chuantou.org
 log_file = /dev/null
 log_level = info
 log_max_days = 3
-[tcp_blackduck3]
+[tcp_blackduck4]
 type = tcp
 privilege_mode = true
 local_ip = 192.168.123.234
