@@ -48,11 +48,13 @@ server_port = 7000
 privilege_token = frp888
 [web_blackduck4]
 privilege_mode = true
-remote_port = 6000
+#remote_port = 6000
 type = http
 local_ip = 192.168.123.234
 local_port = 80
 use_gzip = true
+use_encryption = true
+pool_count = 20
 #subdomain = test
 custom_domains = blackduck4.frp.lu8.win
 #host_header_rewrite = 实际你内网访问的域名，可以供公网的域名不一致，如果一致可以不写
