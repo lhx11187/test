@@ -5,14 +5,14 @@ killall edge
 killall edge2
 
 
-#/opt/bin/n2n/edge -d n2n_v1 -a 10.10.1.14 -c blackduck -k 123 -l kai.lucktu.com:10082 &
-#/opt/bin/n2n/edge -d lu8_v1 -a 10.10.2.14 -c blackduck -k 123 -l n2n.lu8.win:10082 &
-#/opt/bin/n2n/edge -d txdn_v1 -a 10.10.3.14 -c blackduck -k 123 -l n2n.txdn.tk:10082 &
-#/opt/bin/n2n/edge -d lucktu -a 10.10.4.14 -c blackduck -k 123 -l n2n.lucktu.com:10082 &
-#/opt/bin/n2n/edge -d udpfile_v1 -a 10.10.5.14 -c blackduck -k 123 -l n2n.udpfile.com:10082 &
-/opt/bin/n2n/edge -d llfj_v1 -a 10.10.6.14 -c blackduck -k 123 -l n2n.llfj.party:10082 & #苏州电信
-/opt/bin/n2n/edge -d laiyx_v1 -a 10.10.7.14 -c blackduck -k 123 -l n2n.laiyx.win:10082 & #美国
-/opt/bin/n2n/edge -d rb_v1 -a 10.10.8.14 -c blackduck -k 123 -l 106.186.30.16:6489 & #日本
+#/opt/bin/edge -d n2n_v1 -a 10.10.1.14 -c blackduck -k 123 -l kai.lucktu.com:10082 &
+#/opt/bin/edge -d lu8_v1 -a 10.10.2.14 -c blackduck -k 123 -l n2n.lu8.win:10082 &
+#/opt/bin/edge -d txdn_v1 -a 10.10.3.14 -c blackduck -k 123 -l n2n.txdn.tk:10082 &
+#/opt/bin/edge -d lucktu -a 10.10.4.14 -c blackduck -k 123 -l n2n.lucktu.com:10082 &
+#/opt/bin/edge -d udpfile_v1 -a 10.10.5.14 -c blackduck -k 123 -l n2n.udpfile.com:10082 &
+/opt/bin/edge -d llfj_v1 -a 10.10.6.14 -c blackduck -k 123 -l n2n.llfj.party:10082 & #苏州电信
+/opt/bin/edge -d laiyx_v1 -a 10.10.7.14 -c blackduck -k 123 -l n2n.laiyx.win:10082 & #美国
+/opt/bin/edgev1 -d rb_v1 -a 10.10.8.14 -c blackduck -k 123 -l 106.186.30.16:6489 & #日本
 #/opt/bin/n2n/edge -d laiyx_mg_v1 -a 10.10.9.14 -c blackduck -k 123 -l n2n.laiyx.win:10082 &
 
 #捷克	remoteqth.com:82
