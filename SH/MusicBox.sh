@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #启动n2n脚本
-killall edge
+killall edgev1
 killall edge2
 
 
@@ -10,8 +10,8 @@ killall edge2
 #/opt/bin/edge -d txdn_v1 -a 10.10.3.14 -c blackduck -k 123 -l n2n.txdn.tk:10082 &
 #/opt/bin/edge -d lucktu -a 10.10.4.14 -c blackduck -k 123 -l n2n.lucktu.com:10082 &
 #/opt/bin/edge -d udpfile_v1 -a 10.10.5.14 -c blackduck -k 123 -l n2n.udpfile.com:10082 &
-/opt/bin/edge -d llfj_v1 -a 10.10.6.14 -c blackduck -k 123 -l n2n.llfj.party:10082 & #苏州电信
-/opt/bin/edge -d laiyx_v1 -a 10.10.7.14 -c blackduck -k 123 -l n2n.laiyx.win:10082 & #美国
+/opt/bin/edgev1 -d llfj_v1 -a 10.10.6.14 -c blackduck -k 123 -l n2n.llfj.party:10082 & #苏州电信
+/opt/bin/edgev1 -d laiyx_v1 -a 10.10.7.14 -c blackduck -k 123 -l n2n.laiyx.win:10082 & #美国
 /opt/bin/edgev1 -d rb_v1 -a 10.10.8.14 -c blackduck -k 123 -l 106.186.30.16:6489 & #日本
 #/opt/bin/n2n/edge -d laiyx_mg_v1 -a 10.10.9.14 -c blackduck -k 123 -l n2n.laiyx.win:10082 &
 
@@ -25,14 +25,20 @@ logger -t "【N2N启动脚本】" "脚本完成"
 export PATH='/opt/usr/sbin:/opt/usr/bin:/opt/sbin:/opt/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin'
 export LD_LIBRARY_PATH=/lib:/opt/lib
 killall ngrok
+screen -S ngrokssh ngrok -config /opt/bin/tcp.ittun.yml start ssh
+screen -S ngrokaria ngrok -config /opt/bin/tcp.ittun.yml start aria
+screen -S ngroktp ngrok -config /opt/bin/tcp.ittun.yml start tinyproxy
+#ngrok -config /opt/bin/tcp.ittun.yml start ssh & #51687-->22
+#ngrok -config /opt/bin/tcp.ittun.yml start aria & #51688-->6800
+#ngrok -config /opt/bin/tcp.ittun.yml start tinyproxy & #51689-->9999
 
-ngrok -config /opt/bin/tcp.ittun.yml start ssh & #51687-->22
-ngrok -config /opt/bin/tcp.ittun.yml start aria & #51688-->6800
-ngrok -config /opt/bin/tcp.ittun.yml start tinyproxy & #51689-->9999
+screen ngrok -config /opt/bin/ittun.yml start web #blackduck4
+screen ngrok -config /opt/bin/ittun.yml start tr  #blackduck4_9091
+screen ngrok -config /opt/bin/ittun.yml start amule  #blackduck4_4711
 
-ngrok -config /opt/bin/ittun.yml start web & #blackduck4
-ngrok -config /opt/bin/ittun.yml start tr & #blackduck4_9091
-ngrok -config /opt/bin/ittun.yml start amule & #blackduck4_4711
+#ngrok -config /opt/bin/ittun.yml start web & #blackduck4
+#ngrok -config /opt/bin/ittun.yml start tr & #blackduck4_9091
+#ngrok -config /opt/bin/ittun.yml start amule & #blackduck4_4711
 
 
 logger -t "【Ngrok启动脚本】" "脚本完成"
