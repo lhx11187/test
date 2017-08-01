@@ -163,8 +163,38 @@ remote_port = 51686
 
 EOF
 
+
+cat > "/tmp/frp/myfrpc3.ini" <<-\EOF
+[common]
+server_addr = nat.ee
+server_port = 7000
+privilege_token = www.nat.ee
+
+[http_blackduck3]
+type = http
+local_ip = 192.168.3.3
+local_port = 80
+use_gzip = true
+use_encryption = true
+pool_count = 20
+privilege_mode = true
+custom_domains = blackduck3.nat.ee
+log_file = /dev/null
+log_level = info
+log_max_days = 3
+
+[tcp_blackduck3]
+type = tcp
+privilege_mode = true
+local_ip = 192.168.3.3
+local_port = 22
+remote_port = 51686
+
+EOF
+
 #启动：
 frpc -c /tmp/frp/myfrpc.ini &
 frpc -c /tmp/frp/myfrpc1.ini &
 frpc -c /tmp/frp/myfrpc2.ini &
+frpc -c /tmp/frp/myfrpc3.ini &
 logger -t "【FRP启动脚本】" "脚本完成"
