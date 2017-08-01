@@ -188,7 +188,7 @@ type = tcp
 privilege_mode = true
 local_ip = 192.168.3.3
 local_port = 22
-remote_port = 51686
+remote_port = 11686 #10000-19999
 
 EOF
 
