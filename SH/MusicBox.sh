@@ -64,7 +64,7 @@ privilege_token = frp888
 privilege_mode = true
 #remote_port = 6000
 type = http
-local_ip = 192.168.123.234
+local_ip = 192.168.3.196
 local_port = 80
 use_gzip = true
 use_encryption = true
@@ -78,7 +78,7 @@ log_max_days = 3
 [tcp_blackduck4]
 type = tcp
 privilege_mode = true
-local_ip = 192.168.123.234
+local_ip = 192.168.3.196
 local_port = 22
 remote_port = 51687
 EOF
@@ -90,7 +90,7 @@ server_port = 7000
 privilege_token = yzxx
 [web_blackduck4]
 type = http
-local_ip = 192.168.123.234
+local_ip = 192.168.3.196
 local_port = 80
 use_gzip = true
 use_encryption = true
@@ -103,7 +103,7 @@ log_max_days = 3
 [tcp_blackduck4]
 type = tcp
 privilege_mode = true
-local_ip = 192.168.123.234
+local_ip = 192.168.3.196
 local_port = 22
 remote_port = 51687
 EOF
@@ -116,7 +116,7 @@ server_port = 7000
 privilege_token = www.xxorg.com
 [web_blackduck4]
 type = http
-local_ip = 192.168.123.234
+local_ip = 192.168.3.196
 local_port = 80
 use_gzip = true
 use_encryption = true
@@ -129,7 +129,7 @@ log_max_days = 3
 [tcp_blackduck4]
 type = tcp
 privilege_mode = true
-local_ip = 192.168.123.234
+local_ip = 192.168.3.196
 local_port = 22
 remote_port = 51687
 EOF
