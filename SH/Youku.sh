@@ -53,7 +53,7 @@ ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168
 ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:86,Sdname:lhx11187] &
 ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:9091,Sdname:blackduck3_9091] & 
 ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:4200,Sdname:blackduck3_4200] &
-ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:80,Sdname:blackduck3] & 
+#ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:80,Sdname:blackduck3] & 
 #ngrokc -SER[Shost:ittun.cn,Sport:44433,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:80,Sdname:blackduck3] &
 #ngrokc -SER[Shost:ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:6800,Rport:51680] & 
 ngrokc -SER[Shost:tcp.ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:6800,Rport:51680] & 
