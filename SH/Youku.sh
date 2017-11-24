@@ -7,12 +7,18 @@ killall edge2
 
 #/etc/storage/bin/n2n/edge -d n2n_v1 -a 10.10.1.13 -c blackduck -k 123 -l kai.lucktu.com:10082 &
 /etc/storage/bin/n2n/edge -d lu8_v1 -a 10.10.2.13 -c blackduck -k 123 -l n2n.lu8.win:10082 & #日本
+iptables -I INPUT -i lu8_v1 -j ACCEPT
 /etc/storage/bin/n2n/edge -d fjyd_v1 -a 10.10.3.13 -c blackduck -k 123 -l 112.5.73.151:10082 & #福建移动
+iptables -I INPUT -i fjyd_v1 -j ACCEPT
 /etc/storage/bin/n2n/edge -d lucktu -a 10.10.4.13 -c blackduck -k 123 -l n2n.lucktu.com:10082 & #美国
+iptables -I INPUT -i lucktu -j ACCEPT
 #/etc/storage/bin/n2n/edge -d udpfile_v1 -a 10.10.5.13 -c blackduck -k 123 -l n2n.udpfile.com:10082 &
 /etc/storage/bin/n2n/edge -d llfj_v1 -a 10.10.6.13 -c blackduck -k 123 -l remoteqth.com:82 & #捷克
+iptables -I INPUT -i llfj_v1 -j ACCEPT
 /etc/storage/bin/n2n/edge -d laiyx_v1 -a 10.10.7.13 -c blackduck -k 123 -l n2n.laiyx.win:10082 & #美国
+iptables -I INPUT -i laiyx_v1 -j ACCEPT
 /etc/storage/bin/n2n/edge -d rb_v1 -a 10.10.8.13 -c blackduck -k 123 -l 106.186.30.16:6489 & #日本
+iptables -I INPUT -i rb_v1 -j ACCEPT
 
 #捷克	remoteqth.com:82
 #日本 106.186.30.16:6489
