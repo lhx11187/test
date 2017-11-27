@@ -62,8 +62,8 @@ ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168
 #ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:80,Sdname:blackduck3] & 
 #ngrokc -SER[Shost:ittun.cn,Sport:44433,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:80,Sdname:blackduck3] &
 #ngrokc -SER[Shost:ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:6800,Rport:51680] & 
-ngrokc -SER[Shost:tcp.ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:6800,Rport:51680] & 
-ngrokc -SER[Shost:tcp.ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:22,Rport:51686] &
+ngrokc -SER[Shost:tcp.ittun.com,Sport:36415,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:6800,Rport:51680] & 
+ngrokc -SER[Shost:tcp.ittun.com,Sport:36415,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:22,Rport:51686] &
 #ngrokc -SER[Shost:ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:22,Rport:51686] &
 
 logger -t "【Ngrok启动脚本】" "脚本完成"
