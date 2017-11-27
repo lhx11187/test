@@ -1,0 +1,69 @@
+#!/bin/sh
+
+#启动n2n脚本
+killall edge
+killall edge2
+
+
+#/etc/storage/bin/n2n/edge -d n2n_v1 -a 10.10.1.15 -c blackduck -k 123 -l kai.lucktu.com:10082 &
+/etc/storage/bin/n2n/edge -d lu8_v1 -a 10.10.2.15 -c blackduck -k 123 -l n2n.lu8.win:10082 & #日本
+iptables -I INPUT -i lu8_v1 -j ACCEPT
+/etc/storage/bin/n2n/edge -d fjyd_v1 -a 10.10.3.15 -c blackduck -k 123 -l 112.5.73.151:10082 & #福建移动
+iptables -I INPUT -i fjyd_v1 -j ACCEPT
+/etc/storage/bin/n2n/edge -d lucktu -a 10.10.4.15 -c blackduck -k 123 -l n2n.lucktu.com:10082 & #美国
+iptables -I INPUT -i lucktu -j ACCEPT
+#/etc/storage/bin/n2n/edge -d udpfile_v1 -a 10.10.5.15 -c blackduck -k 123 -l n2n.udpfile.com:10082 &
+/etc/storage/bin/n2n/edge -d llfj_v1 -a 10.10.6.15 -c blackduck -k 123 -l remoteqth.com:82 & #捷克
+iptables -I INPUT -i llfj_v1 -j ACCEPT
+/etc/storage/bin/n2n/edge -d laiyx_v1 -a 10.10.7.15 -c blackduck -k 123 -l n2n.laiyx.win:10082 & #美国
+iptables -I INPUT -i laiyx_v1 -j ACCEPT
+/etc/storage/bin/n2n/edge -d rb_v1 -a 10.10.8.15 -c blackduck -k 123 -l 106.186.30.16:6489 & #日本
+iptables -I INPUT -i rb_v1 -j ACCEPT
+
+#捷克	remoteqth.com:82
+#日本 106.186.30.16:6489
+
+
+
+
+
+
+#/etc/storage/bin/n2n/edge2 -d n2n_v2 -a 10.10.10.15 -c blackduck -k 123 -l kai.lucktu.com:10086 &
+#/etc/storage/bin/n2n/edge2 -d lu8_v2 -a 10.10.20.15 -c blackduck -k 123 -l n2n.lu8.win:10086 &
+
+logger -t "【N2N启动脚本】" "脚本完成"
+
+#  启动Ngrok脚本
+export PATH='/opt/usr/sbin:/opt/usr/bin:/opt/sbin:/opt/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin'
+export LD_LIBRARY_PATH=/lib:/opt/lib
+killall ngrokc
+#启动ngrok功能后会运行以下脚本
+#使用方法请查看论坛教程:http://www.right.com.cn/forum/thread-182340-1-1.html
+#ngrokc -SER[Shost:服务器域名,Sport:服务器端口,Atoken:服务器密码] -AddTun[Type:协议,Lhost:本地ip,Lport:本地端口,Rport:外网访问端口]
+#参数说明
+#Shost -服务器服务器地址
+#Sport -服务器端口
+#Atoken -服务器认证串
+#type -协议类型，tcp,http,https
+#Lhost -本地地址，如果是本机直接127.0.0.1
+#Lport -本地端口
+#Sdname -子域名
+#Hostname -自定义域名映射 备注：需要做域名解释到服务器地址
+#Rport -远程端口，tcp映射的时候，制定端口使用。
+
+ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.2.1,Lport:81,Sdname:blackduck5_81] & 
+#ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.2.1,Lport:82,Sdname:blackduck5_82] & 
+#ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.2.1,Lport:83,Sdname:blackduck5_83] & 
+#ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.2.1,Lport:84,Sdname:blackduck5_84] & 
+#ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.2.1,Lport:85,Sdname:blackduck5_85] & 
+#ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.2.1,Lport:86,Sdname:lhx11187] &
+ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.2.1,Lport:9091,Sdname:blackduck5_9091] & 
+ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.2.1,Lport:4200,Sdname:blackduck5_4200] &
+ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.2.1,Lport:80,Sdname:blackduck5] & 
+#ngrokc -SER[Shost:ittun.cn,Sport:44433,Atoken:] -AddTun[Type:http,Lhost:192.168.2.1,Lport:80,Sdname:blackduck5] &
+#ngrokc -SER[Shost:ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.2.1,Lport:6800,Rport:51680] & 
+ngrokc -SER[Shost:tcp.ittun.com,Sport:36415,Atoken:] -AddTun[Type:tcp,Lhost:192.168.2.1,Lport:6800,Rport:52685] & 
+ngrokc -SER[Shost:tcp.ittun.com,Sport:36415,Atoken:] -AddTun[Type:tcp,Lhost:192.168.2.1,Lport:22,Rport:51685] &
+#ngrokc -SER[Shost:ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:22,Rport:51686] &
+
+logger -t "【Ngrok启动脚本】" "脚本完成"
