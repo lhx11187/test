@@ -68,7 +68,7 @@ fi
 
 /opt/bin/ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.123.1,Lport:80,Sdname:blackduck1] &
 /etc/storage/bin/ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.123.1,Lport:80,Sdname:blackduck2] &
-/etc/storage/bin/ngrokc -SER[Shost:tcp.ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.123.1,Lport:22,Rport:51684] &
+/etc/storage/bin/ngrokc -SER[Shost:tcp.ittun.com,Sport:36415,Atoken:] -AddTun[Type:tcp,Lhost:192.168.123.1,Lport:22,Rport:51684] &
 
 
 
