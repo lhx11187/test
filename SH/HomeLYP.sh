@@ -11,13 +11,17 @@ hiboyscript2="https://raw.githubusercontent.com/hiboyhiboy/opt-script/master"
 killall edge
 killall edge2
 #/etc/storage/bin/n2n/edge -d n2n_v1 -a 10.10.1.12 -c blackduck -k 123 -l kai.lucktu.com:10082 &
-#/etc/storage/bin/n2n/edge -d lu8_v1 -a 10.10.2.12 -c blackduck -k 123 -l n2n.lu8.win:10082 &
+/etc/storage/bin/n2n/edge -d lu8_v1 -a 10.10.2.12 -c blackduck -k 123 -l n2n.lu8.win:10082 &
+iptables -I INPUT -i lu8_v1 -j ACCEPT
+/etc/storage/bin/n2n/edge -d lucktu -a 10.10.4.12 -c blackduck -k 123 -l n2n.lucktu.com:10082 & #美国
+iptables -I INPUT -i lucktu -j ACCEPT
 #/etc/storage/bin/n2n/edge -d txdn_v1 -a 10.10.3.12 -c blackduck -k 123 -l n2n.txdn.tk:10082 &
-#/etc/storage/bin/n2n/edge -d lucktu -a 10.10.4.12 -c blackduck -k 123 -l n2n.lucktu.com:10082 &
+
 #/etc/storage/bin/n2n/edge -d udpfile_v1 -a 10.10.5.12 -c blackduck -k 123 -l n2n.udpfile.com:10082 &
-/etc/storage/bin/n2n/edge -d llfj_v1 -a 10.10.6.12 -c blackduck -k 123 -l n2n.llfj.party:10082 &
-/etc/storage/bin/n2n/edge -d laiyx_v1 -a 10.10.7.12 -c blackduck -k 123 -l n2n.laiyx.win:10082 &
+#/etc/storage/bin/n2n/edge -d llfj_v1 -a 10.10.6.12 -c blackduck -k 123 -l n2n.llfj.party:10082 &
+#/etc/storage/bin/n2n/edge -d laiyx_v1 -a 10.10.7.12 -c blackduck -k 123 -l n2n.laiyx.win:10082 &
 /etc/storage/bin/n2n/edge -d rb_v1 -a 10.10.8.12 -c blackduck -k 123 -l 106.186.30.16:6489 &
+iptables -I INPUT -i rb_v1 -j ACCEPT
 #/etc/storage/bin/n2n/edge -d laiyx_mg_v1 -a 10.10.9.12 -c blackduck -k 123 -l n2n.laiyx.win:10082 &
 
 #捷克	remoteqth.com:82
@@ -68,7 +72,8 @@ fi
 
 #/opt/bin/ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.123.1,Lport:80,Sdname:blackduck1] &
 /etc/storage/bin/ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.123.1,Lport:80,Sdname:blackduck2] &
-/etc/storage/bin/ngrokc -SER[Shost:tcp.ittun.com,Sport:36415,Atoken:] -AddTun[Type:tcp,Lhost:192.168.123.1,Lport:22,Rport:51682] &
+/etc/storage/bin/ngrokc -SER[Shost:tcp.ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.123.1,Lport:22,Rport:51682] &
+/etc/storage/bin/ngrokc -SER[Shost:tcp.ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.123.1,Lport:6800,Rport:52682] &
 
 
 
