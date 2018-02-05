@@ -10,7 +10,8 @@ hiboyscript2="https://raw.githubusercontent.com/hiboyhiboy/opt-script/master"
 #启动n2n脚本
 killall edge
 killall edge2
-#/etc/storage/bin/n2n/edge -d n2n_v1 -a 10.10.1.12 -c blackduck -k 123 -l kai.lucktu.com:10082 &
+/etc/storage/bin/n2n/edge -d n2n_v1 -a 10.10.1.12 -c blackduck -k 123 -l 124.114.154.6:10082 &
+iptables -I INPUT -i n2n_v1 -j ACCEPT
 /etc/storage/bin/n2n/edge -d lu8_v1 -a 10.10.2.12 -c blackduck -k 123 -l n2n.lu8.win:10082 &
 iptables -I INPUT -i lu8_v1 -j ACCEPT
 /etc/storage/bin/n2n/edge -d lucktu -a 10.10.4.12 -c blackduck -k 123 -l n2n.lucktu.com:10082 & #美国
@@ -18,8 +19,10 @@ iptables -I INPUT -i lucktu -j ACCEPT
 #/etc/storage/bin/n2n/edge -d txdn_v1 -a 10.10.3.12 -c blackduck -k 123 -l n2n.txdn.tk:10082 &
 
 #/etc/storage/bin/n2n/edge -d udpfile_v1 -a 10.10.5.12 -c blackduck -k 123 -l n2n.udpfile.com:10082 &
-#/etc/storage/bin/n2n/edge -d llfj_v1 -a 10.10.6.12 -c blackduck -k 123 -l n2n.llfj.party:10082 &
-#/etc/storage/bin/n2n/edge -d laiyx_v1 -a 10.10.7.12 -c blackduck -k 123 -l n2n.laiyx.win:10082 &
+/etc/storage/bin/n2n/edge -d llfj_v1 -a 10.10.6.12 -c blackduck -k 123 -l n2n.llfj.party:10082 &
+iptables -I INPUT -i llfj_v1 -j ACCEPT
+/etc/storage/bin/n2n/edge -d laiyx_v1 -a 10.10.7.12 -c blackduck -k 123 -l n2n.laiyx.win:10082 &
+iptables -I INPUT -i laiyx_v1 -j ACCEPT
 /etc/storage/bin/n2n/edge -d rb_v1 -a 10.10.8.12 -c blackduck -k 123 -l 106.186.30.16:6489 &
 iptables -I INPUT -i rb_v1 -j ACCEPT
 #/etc/storage/bin/n2n/edge -d laiyx_mg_v1 -a 10.10.9.12 -c blackduck -k 123 -l n2n.laiyx.win:10082 &
@@ -168,9 +171,9 @@ EOF
 
 
 #启动：
-frpc -c /tmp/frp/myfrpc.ini &
-/tmp/frp/frpc -c /tmp/frp/myfrpc.ini &
+#frpc -c /tmp/frp/myfrpc.ini &
+#/tmp/frp/frpc -c /tmp/frp/myfrpc.ini &
 #frpc -c /tmp/frp/myfrpc1.ini &
-frpc -c /tmp/frp/myfrpc2.ini &
-/tmp/frp/frpc -c /tmp/frp/myfrpc2.ini &
+#frpc -c /tmp/frp/myfrpc2.ini &
+#/tmp/frp/frpc -c /tmp/frp/myfrpc2.ini &
 logger -t "【FRP启动脚本】" "脚本完成"
