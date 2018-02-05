@@ -5,15 +5,16 @@ killall edge
 killall edge2
 
 
-#/etc/storage/bin/n2n/edge -d n2n_v1 -a 10.10.1.13 -c blackduck -k 123 -l kai.lucktu.com:10082 &
+/etc/storage/bin/n2n/edge -d n2n_v1 -a 10.10.1.13 -c blackduck -k 123 -l 124.114.154.6:10082 & #西安电信
+iptables -I INPUT -i n2n_v1 -j ACCEPT
 /etc/storage/bin/n2n/edge -d lu8_v1 -a 10.10.2.13 -c blackduck -k 123 -l n2n.lu8.win:10082 & #日本
 iptables -I INPUT -i lu8_v1 -j ACCEPT
-/etc/storage/bin/n2n/edge -d fjyd_v1 -a 10.10.3.13 -c blackduck -k 123 -l 112.5.73.151:10082 & #福建移动
-iptables -I INPUT -i fjyd_v1 -j ACCEPT
+#/etc/storage/bin/n2n/edge -d fjyd_v1 -a 10.10.3.13 -c blackduck -k 123 -l 112.5.73.151:10082 & #福建移动
+#iptables -I INPUT -i fjyd_v1 -j ACCEPT
 /etc/storage/bin/n2n/edge -d lucktu -a 10.10.4.13 -c blackduck -k 123 -l n2n.lucktu.com:10082 & #美国
 iptables -I INPUT -i lucktu -j ACCEPT
 #/etc/storage/bin/n2n/edge -d udpfile_v1 -a 10.10.5.13 -c blackduck -k 123 -l n2n.udpfile.com:10082 &
-/etc/storage/bin/n2n/edge -d llfj_v1 -a 10.10.6.13 -c blackduck -k 123 -l remoteqth.com:82 & #捷克
+/etc/storage/bin/n2n/edge -d llfj_v1 -a 10.10.6.13 -c blackduck -k 123 -l n2n.llfj.party:10082 & #苏州电信
 iptables -I INPUT -i llfj_v1 -j ACCEPT
 /etc/storage/bin/n2n/edge -d laiyx_v1 -a 10.10.7.13 -c blackduck -k 123 -l n2n.laiyx.win:10082 & #美国
 iptables -I INPUT -i laiyx_v1 -j ACCEPT
@@ -59,6 +60,7 @@ ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168
 ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:86,Sdname:lhx11187] &
 ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:9091,Sdname:blackduck3_9091] & 
 ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:4200,Sdname:blackduck3_4200] &
+ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:888,Sdname:blackduck3_888] &
 #ngrokc -SER[Shost:ittun.com,Sport:36415,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:80,Sdname:blackduck3] & 
 #ngrokc -SER[Shost:ittun.cn,Sport:44433,Atoken:] -AddTun[Type:http,Lhost:192.168.3.3,Lport:80,Sdname:blackduck3] &
 #ngrokc -SER[Shost:ittun.com,Sport:44433,Atoken:] -AddTun[Type:tcp,Lhost:192.168.3.3,Lport:6800,Rport:51680] & 
@@ -198,8 +200,8 @@ remote_port = 11686 #10000-19999
 EOF
 
 #启动：
-frpc -c /tmp/frp/myfrpc.ini &
-frpc -c /tmp/frp/myfrpc1.ini &
-frpc -c /tmp/frp/myfrpc2.ini &
-frpc -c /tmp/frp/myfrpc3.ini &
+#frpc -c /tmp/frp/myfrpc.ini &
+#frpc -c /tmp/frp/myfrpc1.ini &
+#frpc -c /tmp/frp/myfrpc2.ini &
+#frpc -c /tmp/frp/myfrpc3.ini &
 logger -t "【FRP启动脚本】" "脚本完成"
