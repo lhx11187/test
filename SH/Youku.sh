@@ -83,9 +83,6 @@ mkdir -p /tmp/frp
 #客户端配置：
 cat > "/tmp/frp/myfrpc.ini" <<-\EOF
 [common]
-#server_addr = 115.159.6.79
-#server_port = 7000
-#privilege_token = txdn
 server_addr = frp.lu8.win
 server_port = 7000
 privilege_token = frp888
@@ -109,15 +106,16 @@ type = tcp
 privilege_mode = true
 local_ip = 192.168.3.3
 local_port = 22
-remote_port = 51686
+remote_port = 51683
 
 EOF
 
 cat > "/tmp/frp/myfrpc1.ini" <<-\EOF
 [common]
-server_addr = www.ifrp.ga
+#server_addr = freenat.tk
+server_addr = freenat.win
 server_port = 7000
-privilege_token = yzxx
+privilege_token = frp888
 
 [web_blackduck3]
 type = http
@@ -127,7 +125,7 @@ use_gzip = true
 use_encryption = true
 pool_count = 20
 privilege_mode = true
-custom_domains = blackduck3.ifrp.ga
+custom_domains = blackduck3.freenat.win
 log_file = /dev/null
 log_level = info
 log_max_days = 3
@@ -137,14 +135,15 @@ type = tcp
 privilege_mode = true
 local_ip = 192.168.3.3
 local_port = 22
-remote_port = 51686
+remote_port = 51683
 
 EOF
 
 
 cat > "/tmp/frp/myfrpc2.ini" <<-\EOF
 [common]
-server_addr = frp3.chuantou.org
+#server_addr = frp2.chuantou.org
+server_addr = frp1.chuantou.org
 server_port = 7000
 privilege_token = www.xxorg.com
 
@@ -156,7 +155,7 @@ use_gzip = true
 use_encryption = true
 pool_count = 20
 privilege_mode = true
-custom_domains = blackduck3.frp3.chuantou.org
+custom_domains = blackduck3.frp1.chuantou.org
 log_file = /dev/null
 log_level = info
 log_max_days = 3
@@ -166,16 +165,16 @@ type = tcp
 privilege_mode = true
 local_ip = 192.168.3.3
 local_port = 22
-remote_port = 51686
+remote_port = 51683
 
 EOF
 
 
 cat > "/tmp/frp/myfrpc3.ini" <<-\EOF
 [common]
-server_addr = nat.ee
+server_addr = freefrp.cn
 server_port = 7000
-privilege_token = www.nat.ee
+privilege_token = frp888
 
 [http_blackduck3]
 type = http
@@ -185,7 +184,7 @@ use_gzip = true
 use_encryption = true
 pool_count = 20
 privilege_mode = true
-custom_domains = blackduck3.nat.ee
+custom_domains = blackduck3.freefrp.cn
 log_file = /dev/null
 log_level = info
 log_max_days = 3
@@ -195,13 +194,13 @@ type = tcp
 privilege_mode = true
 local_ip = 192.168.3.3
 local_port = 22
-remote_port = 11686 #10000-19999
+remote_port = 51683 #1000-65535
 
 EOF
 
 #启动：
-#frpc -c /tmp/frp/myfrpc.ini &
-#frpc -c /tmp/frp/myfrpc1.ini &
-#frpc -c /tmp/frp/myfrpc2.ini &
-#frpc -c /tmp/frp/myfrpc3.ini &
+frpc -c /tmp/frp/myfrpc.ini &
+frpc -c /tmp/frp/myfrpc1.ini &
+frpc -c /tmp/frp/myfrpc2.ini &
+frpc -c /tmp/frp/myfrpc3.ini &
 logger -t "【FRP启动脚本】" "脚本完成"
