@@ -17,7 +17,7 @@ iptables -I FORWARD -o lu8_v1 -j ACCEPT
 iptables -I INPUT -i udpfile_v1 -j ACCEPT
 iptables -I OUTPUT -o udpfile_v1 -j ACCEPT
 iptables -I FORWARD -o udpfile_v1 -j ACCEPT
-/etc/storage/bin/n2n/edge -d yingftf_v1 -a 10.10.4.13 -c blackduck -k 123 -l n2n.yingftf.cn:10082 & #美国
+/etc/storage/bin/n2n/edge -d yingftf_v1 -a 10.10.4.13 -c blackduck -k 123 -l n2n.yingftf.cn:10082 & #腾讯云
 iptables -I INPUT -i yingftf_v1 -j ACCEPT
 iptables -I OUTPUT -o yingftf_v1 -j ACCEPT
 iptables -I FORWARD -o yingftf_v1 -j ACCEPT
