@@ -23,13 +23,18 @@ iptables -I OUTPUT -o yingftf_v1 -j ACCEPT
 iptables -I FORWARD -o yingftf_v1 -j ACCEPT
 
 
+
 #捷克	remoteqth.com:82
 #日本 106.186.30.16:6489
 
-
-
-
-
+#V21
+/etc/storage/bin/n2n/edge21 -d lucktu_V21 -a 10.22.1.3 -c blackduck -k 123 -f -L 192.168.3.3 -l n2n.lucktu.com:10088 -r -b &
+/etc/storage/bin/n2n/edge21 -d udpfile_V21 -a 10.22.2.3 -c blackduck -k 123 -f -L 192.168.3.3 -l n2n.udpfile.com:10088 -r -b &
+/etc/storage/bin/n2n/edge21 -d yingftf_V21 -a 10.22.3.3 -c blackduck -k 123 -f -L 192.168.3.3 -l n2n.yingftf.cn:10088 -r -b &
+iptables -t nat -A POSTROUTING -j MASQUERADE &
+iptables -I INPUT -i lucktu_V21 -j ACCEPT &
+iptables -I INPUT -i udpfile_V21 -j ACCEPT &
+iptables -I INPUT -i yingftf_V21 -j ACCEPT &
 
 #/etc/storage/bin/n2n/edge2 -d n2n_v2 -a 10.10.10.13 -c blackduck -k 123 -l kai.lucktu.com:10086 &
 #/etc/storage/bin/n2n/edge2 -d lu8_v2 -a 10.10.20.13 -c blackduck -k 123 -l n2n.lu8.win:10086 &
